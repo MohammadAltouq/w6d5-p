@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<main class="container search_hero">
+    <div class="row">
+        <aside class="col-6 col-md-3">
+            <h3>search a hero!</h3>
+            {% include 'search_name.html' %}
+        </aside>
+        <div class="col-6 col-3" >
+            <p><b>search marvel characters by the exact name.<br>ANT-MAN, Spider-Man (Peter Parker), Thor, Hulk</b></p>
+        </div>
+    </div>
+</main>
+<div class="container">
+    <h3> Here are your profile details: </h3>
+    <li class="list-group-item">Email: {{ current_user.email }}</li>
+    <li class="list-group-item">Token: {{ current_user.token }}</li>
+    
+{% endblock content %}

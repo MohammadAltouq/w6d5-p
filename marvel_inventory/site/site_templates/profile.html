@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            {% if cat == "auth-success" %}
+            <div class="container">
+                {{msg}}
+                <button type="button" class="close" data-dismiss="alert"onclick="this.parentElement.style.display='none'">$times;</button>
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<header class="hero-section">
+    <h3 class="header-text">Welcome to My Hero, {{ current_user.email }}</h3>
+    <main class="container">
+        <div class="row">
+            <aside class="col-12 col-md-6">
+                <h2>Create a Hero!</h2>
+                {% include 'form_hero.html' %}
+            </aside>
+        </div>
+    </main>
+</header>
+
+<div class="container">
+    <h3> Here are your profile details: </h3>
+    <li class="list-group-item">Email: {{ current_user.email }}</li>
+    <li class="list-group-item">Token: {{ current_user.token }}</li>
+    <div class="row"><h5><b>Marvel hero list</b></h5></div>
+        <div class="row">
+            {% for i in mdata %}
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ i.img }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-id">{{ i.marvel_id }} </h5>
+                        <h5 class="card-title">{{ i.name }}</h5>
+                        <p class="card-text">  {{ i.description }}</p>
+                    </div>     
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row"><h5><b>customised hero list</b></h5></div>
+        <div class="row">
+            {% for j in data %}
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="../../static/images/logo.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ j.name }}</h5>
+                        <p class="card-text">  {{ j.description }}</p>
+                    </div>     
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

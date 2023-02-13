@@ -1,0 +1,15 @@
+<form method = "POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        <fieldset id="name-field">
+            {{ form.name.label }}
+            {{ form.name(class = "form-control", placeholder = "Name") }}
+        </fieldset>
+        <fieldset id="description-field">
+            {{ form.description.label }}
+            {{ form.description(class = "form-control", placeholder = "description") }}
+        </fieldset>
+        <br>
+        {{ form.submit_button(class = "btn btn-primary btn-block") }}
+    </div>
+</form>
